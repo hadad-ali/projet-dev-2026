@@ -9,24 +9,12 @@ Route::get('/', function () {
 })->name('hm');
 
 // localhost:8000/about-us
-Route::get('/qui-sommes-nous', function () {
-    return view('about');
-})->name('abt');
+Route::get('/qui-sommes-nous',  [PagesController::class, 'about'])->name('abt');
 
+Route::get('/bonjour', [PagesController::class, 'bonjour']);
 
+Route::get('/bonjour/{nom}', [PagesController::class, 'bonjourNom']);
 
-Route::get('/bonjour', function () {
-    return view('bonjour');
-});
-
-Route::get('/bonjour/{nom}', function ($nom) {
-    return view('bonjour', compact('nom'));
-});
-
-//Routes ,  Model(BD) View(blade @) Controller (MVC)
-
-
-// php artisan make:controller PagesController
 Route::get(
     '/bonjour/{gender}/{nom}',
     [PagesController::class, 'bonjourGender']
