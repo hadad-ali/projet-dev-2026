@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+
 class PagesController extends Controller
 {
     public function about()
@@ -30,5 +32,13 @@ class PagesController extends Controller
         }
 
         return view('bonjour', compact('nom'));
+    }
+
+    public function list()
+    {
+        $users = User::all();
+
+        return view('list-users'
+        ,compact('users'));
     }
 }

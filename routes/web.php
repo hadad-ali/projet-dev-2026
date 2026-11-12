@@ -19,3 +19,5 @@ Route::get(
     '/bonjour/{gender}/{nom}',
     [PagesController::class, 'bonjourGender']
 );
+
+Route::get('/users',[PagesController::class,'list']);
