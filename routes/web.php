@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 
 // localhost:8000/
@@ -21,3 +22,5 @@ Route::get(
 );
 
 Route::get('/users',[PagesController::class,'list']);
+
+Route::get('/products',[ProductsController::class, 'index']);
