@@ -24,3 +24,10 @@ Route::get(
 Route::get('/users',[PagesController::class,'list']);
 
 Route::get('/products',[ProductsController::class, 'index']);
+
+// a href  /product/1
+// a href  /product/2
+Route::get('/product/{id}'
+,[ProductsController::class, 'show']);
+
+// Product::find(5)
