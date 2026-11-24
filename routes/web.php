@@ -33,3 +33,10 @@ Route::get('/products/add', [ProductsController::class, 'create'])->name('produc
 // recoit data du formulaire apres submit
 Route::post('/products/store',
     [ProductsController::class, 'store'])->name('products.store');
+
+// afficher le formulaire de modification d'un produit a traver son id
+Route::get('/products/edit/{id}'
+, [ProductsController::class, 'edit'])->name('products.edit');
+
+Route::post('/products/save',[ProductsController::class, 'update'])->name('products.update');
+

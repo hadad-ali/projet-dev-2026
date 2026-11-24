@@ -35,6 +35,30 @@ class ProductsController extends Controller
             'titre' => $form->input('tt'),
             'prix' => $form->pp,
         ]);
+
+        return redirect()->route('products.index');
+    }
+
+    public function edit($id)
+    {
+        $p = Product::findOrFail($id);
+
+        return view('products.edit', compact('p'));
+    }
+
+    // after submit
+    public function update(Request $r)
+    {
+        // recuperer id
+        $id = $r->input('id');
+
+        $p = Product::findOrFail($id);
+
+        $p->update([
+            'titre' => $r->input('tt'),
+            'prix' => $r->pp,
+        ]);
+
         return redirect()->route('products.index');
     }
 }
