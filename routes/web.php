@@ -10,7 +10,7 @@ Route::get('/', function () {
 })->name('hm');
 
 // localhost:8000/about-us
-Route::get('/qui-sommes-nous',  [PagesController::class, 'about'])->name('abt');
+Route::get('/qui-sommes-nous', [PagesController::class, 'about'])->name('abt');
 
 Route::get('/bonjour', [PagesController::class, 'bonjour']);
 
@@ -21,13 +21,15 @@ Route::get(
     [PagesController::class, 'bonjourGender']
 );
 
-Route::get('/users',[PagesController::class,'list']);
+Route::get('/users', [PagesController::class, 'list']);
 
-Route::get('/products',[ProductsController::class, 'index']);
+Route::get('/products', [ProductsController::class, 'index'])->name('products.index');
 
-// a href  /product/1
-// a href  /product/2
-Route::get('/product/{id}'
-,[ProductsController::class, 'show']);
+Route::get('/product/{id}', [ProductsController::class, 'show'])->name('products.show');
 
-// Product::find(5)
+// afficher le formulaire d'ajout
+Route::get('/products/add', [ProductsController::class, 'create'])->name('products.create');
+
+// recoit data du formulaire apres submit
+Route::post('/products/store',
+    [ProductsController::class, 'store'])->name('products.store');
