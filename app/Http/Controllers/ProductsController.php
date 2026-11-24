@@ -36,7 +36,8 @@ class ProductsController extends Controller
             'prix' => $form->pp,
         ]);
 
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')
+        ->with('success',"Le produit a été ajouter avec succes");
     }
 
     public function edit($id)
@@ -49,9 +50,9 @@ class ProductsController extends Controller
     // after submit
     public function update(Request $r)
     {
-        // recuperer id
+        // recuperer id depuis le formulaire
         $id = $r->input('id');
-
+        // trouver le produit à modifier
         $p = Product::findOrFail($id);
 
         $p->update([
@@ -59,6 +60,7 @@ class ProductsController extends Controller
             'prix' => $r->pp,
         ]);
 
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')
+        ->with('success',"Le produit a été modifier avec succes");
     }
 }

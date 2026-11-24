@@ -4,6 +4,13 @@
 
 @section('contenu')
     <h1>liste des produits</h1>
+
+    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endif
+
     <table class="table">
         <tr>
             <th>id</th>
@@ -18,6 +25,7 @@
                 <td>{{ $p->prix }}</td>
                 <td>
                     <a href="/product/{{ $p->id }}">visiter</a>
+                    <a href="/products/edit/{{ $p->id }}">modifier</a>
                 </td>
             </tr>
         @endforeach
